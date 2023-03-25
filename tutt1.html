@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            color: #333;
+        }
+        h1{
+            margin: 50px;
+        }
+        #container{
+            margin: 0px auto;/*trbl*/
+            width: 500px;
+            height: 375px;
+            border: 10px solid #333;
+        }
+        #videoElement{
+            width: 500px;
+            height: 375px;
+            background-color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>stream  </h1>
+        <div id="container">
+            <video src="" autoplay="true" id="videoElement"></video>
+        </div>
+  
+    <script>
+        let video=document.querySelector("#videoElement");
+        if(navigator.mediaDevices.getUserMedia){
+            navigator.mediaDevices.getUserMedia({video:true}).then(
+            function(stream) {
+                video.srcObject=stream;
+            }
+        ).catch(function(error){
+            console.log("someting went rong");
+            console.log(error)
+        })
+    }
+    </script>
+</body>
+</html>
